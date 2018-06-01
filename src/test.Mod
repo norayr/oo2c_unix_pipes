@@ -25,12 +25,16 @@ p : String;
 BEGIN
    l := Strings.Length(s);
    INC(l);
+   INC(l);
    NEW(p, l);
    i := 0;
    REPEAT
      p[i] := s[i];
-   UNTIL i = l;
-   RETURN p;
+     INC(i)
+   UNTIL i = l-2;
+   INC(i);
+   p[i] := Ascii.nul;
+   RETURN p
 END OberonStringtoPchar;
 
 PROCEDURE POpen*(VAR f : TextFile; VAR(*CONST*) s : ARRAY OF CHAR ; mode : CHAR);
